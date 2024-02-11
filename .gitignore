@@ -1,0 +1,6 @@
+# ignored files/directories :
+
+config.json
+node_modules
+.idea
+tempo/**
