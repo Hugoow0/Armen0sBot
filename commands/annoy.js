@@ -7,7 +7,7 @@ module.exports = {
         .addUserOption(option =>
             option
                 .setName('user')
-                .setDescription('Need a user to test')
+                .setDescription('The user to annoy')
                 .setRequired(true)
         )
         .addStringOption(option =>
@@ -36,7 +36,7 @@ module.exports = {
                 // Send a message to the user's DM
                 await dmChannel.send(message);
 
-                interaction.reply(`Message sent to ${user.username} !\n Message :\n${message}`);
+                interaction.reply(`Message sent to ${user.username} ! \n**Message :** \n*${message}*`);
             } else {
                 interaction.reply('I can\'t annoy a bot.');
             }

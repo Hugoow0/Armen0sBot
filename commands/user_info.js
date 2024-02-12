@@ -45,7 +45,9 @@ module.exports = {
             }
         } catch (error) {
             console.error(error);
-            interaction.reply('An error occurred while fetching user information.');
+            
+            // Check for specific error codes
+            interaction.reply('Something went wrong... \nPlease try again later.');
         }
     },
 };

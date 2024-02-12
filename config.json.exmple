@@ -1,0 +1,6 @@
+{
+    "token": "YOUR_TOKEN",
+    "guildId": "YOUR_GUILD_ID",
+    "clientId": "YOUR_CLIENT_ID",
+    "logChannleId": "YOUR_LOGCHANNEL_ID"
+}
