@@ -7,5 +7,6 @@ module.exports = {
 
         async execute(interaction){
                 await interaction.reply('**pong!**');
+                console.log(interaction);
         }
 }

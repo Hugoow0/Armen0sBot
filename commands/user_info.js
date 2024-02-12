@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -24,6 +24,7 @@ module.exports = {
 
             // Get the user's presence
             const presence = member.presence;
+            console.log(presence);
 
             // Check if the user has presence
             if (presence) {
@@ -33,21 +34,57 @@ module.exports = {
 
                 if(activity.includes(activity[0])) {
                     const activityName = activity[0].name;
-                    interaction.reply(`User information for **${user.globalName}**:\n Bot: ${isBot}\n Status: ${status}\n Activity: ${activityName}`);
+            
+                    // inside a command, event listener, etc.
+                    const exampleEmbed = new EmbedBuilder()
+                    .setColor(0x0087FF)
+                    .setTitle(`${user.globalName}`)
+                    .setAuthor({ name: `${user.username}`, iconURL: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`})
+                    .setDescription(`User information for **${user.username}**:`)
+                    .setThumbnail(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`)
+                    .addFields(
+                        { name: 'Bot:', value: `${isBot}`, inline: true },
+                        { name: 'Status:', value: `${status}`, inline: true },
+                        { name: 'Activity:', value: `${activityName}`, inline: true },
+                    )
+                    .setTimestamp()
+                    .setFooter({ text: 'Using /user_info' });
+                    
+                    await interaction.reply({ embeds: [exampleEmbed] });
                 }
                 else {
                     // Reply with user information
-                    interaction.reply(`User information for **${user.globalName}**:\nBot: ${isBot}\nStatus: ${status}`);
+                    const exampleEmbed = new EmbedBuilder()
+                    .setColor(0x0087FF)
+                    .setTitle(`${user.globalName}`)
+                    .setAuthor({ name: `${user.username}`, iconURL: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`})
+                    .setDescription(`User information for **${user.username}**:`)
+                    .setThumbnail(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`)
+                    .addFields(
+                        { name: 'Bot:', value: `${isBot}`, inline: true },
+                        { name: 'Status:', value: `${status}`, inline: true },
+                    )
+                    .setTimestamp()
+                    .setFooter({ text: 'Using /user_info' });
+                    
+                    await interaction.reply({ embeds: [exampleEmbed] });
                 }
                 
-            } else {
+            } 
+            /*
+            else {
                 interaction.reply(`User information for **${user.globalName}**:\nBot: ${isBot}\nStatus: Not available`);
+                
             }
+            */
         } catch (error) {
             console.error(error);
             
             // Check for specific error codes
-            interaction.reply('Something went wrong... \nPlease try again later.');
+            const exampleEmbed = new EmbedBuilder()
+                .setColor(0xC80000)
+                .setDescription('**Error**: Something went wrong... \nPlease try again later.')
+            interaction.reply({ embeds: [exampleEmbed] });
         }
     },
 };
