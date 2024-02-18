@@ -43,9 +43,9 @@ module.exports = {
                     .setDescription(`User information for **${user.username}**:`)
                     .setThumbnail(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`)
                     .addFields(
-                        { name: 'Bot:', value: `${isBot}`, inline: true },
-                        { name: 'Status:', value: `${status}`, inline: true },
-                        { name: 'Activity:', value: `${activityName}`, inline: true },
+                        { name: 'Bot:', value: `\`${isBot}\``, inline: true },
+                        { name: 'Status:', value: `\`${status}\``, inline: true },
+                        { name: 'Activity:', value: `\`${activityName}\``, inline: true },
                     )
                     .setTimestamp()
                     .setFooter({ text: 'Using /user_info' });
@@ -61,8 +61,8 @@ module.exports = {
                     .setDescription(`User information for **${user.username}**:`)
                     .setThumbnail(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`)
                     .addFields(
-                        { name: 'Bot:', value: `${isBot}`, inline: true },
-                        { name: 'Status:', value: `${status}`, inline: true },
+                        { name: 'Bot:', value: `\`${isBot}\``, inline: true },
+                        { name: 'Status:', value: `\`${status}\``, inline: true },
                     )
                     .setTimestamp()
                     .setFooter({ text: 'Using /user_info' });

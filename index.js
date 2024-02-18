@@ -56,7 +56,7 @@ client.on('messageCreate', async message => {
 
     if (!message.guild) {
         // Message is a direct message
-        console.log('Direct message detected');
+        console.log('-\nDirect message detected');
         
         const logChannel = client.channels.cache.get(logChannelId);
 
@@ -65,10 +65,10 @@ client.on('messageCreate', async message => {
             
             console.log("From :",message.author.username, message.author.id);
             console.log('Message received: \<*', message.content, '*\> in guild:', message.guild);
-            console.log('Log channel found:', logChannel.name, '\n-\n-\n-');
+            console.log('Log channel found:', logChannel.name, '\n-');
             logChannel.send(`Received DM from **${message.author.tag}**: ${message.content}`);
         } else {
-            console.error(`Log channel not found with ID: ${logChannelId} \n-\n-\n-`);
+            console.error(`Log channel not found with ID: ${logChannelId} \n-`);
         }
         
     }
